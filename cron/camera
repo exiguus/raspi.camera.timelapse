@@ -1,0 +1,19 @@
+# /etc/cron.d/camera
+# cron for raspi.camera.timelapse
+
+
+# take photos
+*/1 * * * * root /usr/local/sbin/camera/init/take.sh
+
+# sync photos/videos
+*/10 * * * * root /usr/local/sbin/camera/init/sync.sh
+
+# make video
+* */2 * * * root /usr/local/sbin/camera/init/make.sh
+
+# backup photos/videos
+10,25,40,55 */12 * * * root /usr/local/sbin/camera/init/backup.sh
+
+# check uploaded photos
+59 */1 * * * root /usr/local/sbin/camera/check/photo.sh
+
